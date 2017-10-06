@@ -11,13 +11,21 @@ namespace LearnWebAPI
         {
             // Web API configuration and services
 
-            // Web API routes
+            // Attribute routing.
             config.MapHttpAttributeRoutes();
 
+            // Convention-based Default routing.
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
+
+            // Convention-based Custom routing.
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "Products",
+                routeTemplate: "api/products/{id}",
+                defaults: new { controller = "products", id = RouteParameter.Optional }
             );
         }
     }
